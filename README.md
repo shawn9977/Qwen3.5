@@ -512,6 +512,25 @@ Generated tokens/iter (observed): min=512, max=512, mean=512.00
 | **INT8** | Multimodal (image+text) | 1408 | 64 | 3/5 | 36286 ms | 95.6 ms | 1.51 tok/s |
 | **INT8** | Multimodal (image+text) | 1408 | 512 | 3/10 | 37208 ms | 99.2 ms | 5.83 tok/s |
 
+#### PTL 平台实测结果
+
+> 说明：以下结果来自 PTL 机器实测（`ptl_env`），由 `run_ptl_full_benchmark.py` 一键跑完 8 组配置。
+>
+> 结果目录：`/home/intel/project/Qwen3.5/benchmark_logs/ptl_full_benchmark_20260514_165115`
+>
+> 已核对 `summary.csv` 与 8 个 raw log 的 `mean TTFT / mean TPOT / Throughput`，结果一致（个别 TTFT 存在 1 ms 的四舍五入差异）。
+
+| 量化精度 | 测试模式 | SeqLen / Prompt tokens | New tokens | Warmup/Iters | TTFT (mean) | TPOT (mean) | Throughput |
+|---|---|---|---|---|---|---|---|
+| **INT4** | Text-only (LLM) | 1024 | 64 | 3/5 | 1812 ms | 32.8 ms | 16.50 tok/s |
+| **INT4** | Text-only (LLM) | 1024 | 512 | 3/10 | 1765 ms | 32.4 ms | 28.01 tok/s |
+| **INT4** | Multimodal (image+text) | 1408 | 64 | 3/5 | 2389 ms | 36.5 ms | 13.66 tok/s |
+| **INT4** | Multimodal (image+text) | 1408 | 512 | 3/10 | 2404 ms | 35.8 ms | 24.78 tok/s |
+| **INT8** | Text-only (LLM) | 1024 | 64 | 3/5 | 2205 ms | 43.2 ms | 12.99 tok/s |
+| **INT8** | Text-only (LLM) | 1024 | 512 | 3/10 | 2205 ms | 43.1 ms | 21.13 tok/s |
+| **INT8** | Multimodal (image+text) | 1408 | 64 | 3/5 | 2834 ms | 47.7 ms | 10.97 tok/s |
+| **INT8** | Multimodal (image+text) | 1408 | 512 | 3/10 | 2829 ms | 46.6 ms | 19.21 tok/s |
+
 ---
 
 ## 八、遇到的问题和解决步骤
